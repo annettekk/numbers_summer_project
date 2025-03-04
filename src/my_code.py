@@ -12,9 +12,15 @@ if __name__ == "__main__":
     
     
     results_dir = './results/'
-    new_file_name = input("Enter the results file name: ")
+    while True:
+        new_file_name = input("Enter the results file name: ").strip()
+        if new_file_name:
+            break
+        print("Filename cannot be empty. Please enter a valid name.")
+    
+    if not new_file_name.endswith(".txt"):
+        new_file_name += ".txt"
     new_file = results_dir + new_file_name
-    #os.mkdir(results_dir)
     with open(new_file, 'w') as f_out:
         f_out.write(str(sum))
 
